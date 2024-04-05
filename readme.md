@@ -25,6 +25,7 @@ MongoDB (como base de datos para almacenar artículos y usuarios)
 - Axios (para realizar solicitudes HTTP desde el frontend al backend)
 - Editor de Markdown (por ejemplo, react-markdown) para escribir artículos en formato Markdown
 - Gravatar (o similar) para mostrar avatares de usuarios basados en sus correos electrónicos
+- Bcrypt Encriptamiento de contraseñas
 
 ## Características:
 
