@@ -3,11 +3,11 @@ const User = require('../models/user.model')
 // Registro de usuarios
 const registerUser = async (req, res) => {
     const { username, email, name, lastName, password, gear, sex } = req.body;
-    
+
     try {
         // Verificacion de Usuario e email no duplicate
         let user = await User.findOne({ $or: [{ username }, { email }] })
-
+        
         if (user) {
             if (user.username == username && user.email == email) {
                 return res.status(400).json({ error: "Este usuario y email ya han sido registrado" })
@@ -18,10 +18,18 @@ const registerUser = async (req, res) => {
             }
         }
 
-        // add new user 
+        // new user 
         user = new User({ username, email, name, lastName, password, gear, sex })
-        await user.save();
+        
+        // Validate Campos
+        try{
+            await user.validate()
+        }catch (error){
+            return res.status(400).json({message: error.message})
+        }
 
+        // Save User
+        await user.save();
         res.status(201).json({ message: "Usuario Registrado exitosamente" })
 
     } catch (error) {

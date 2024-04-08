@@ -1,32 +1,34 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
-const {genSalt, hash} = bcrypt
+const { genSalt, hash } = bcrypt
 // Scheme User
 const userScheme = new mongoose.Schema({
-    username: {type: String, required: true, unique: true},
-    email: {type: String, required: true, unique: true},
-    name: {type: String, required: true},
-    lastName: {type: String, required: true},
-    password: {type: String, required: true},
-    gear: {type: Number, required: true},
-    sex: {type: String, required: true},
-    createAt: {type: Date, default: Date.now }
+    username: { type: String, required: { message: 'El campo username no puede estar vacio' }, unique: true },
+    email: { type: String, required: { message: 'El campo email no puede estar vacio' }, unique: true },
+    name: { type: String, required: { message: 'El campo name no puede estar vacio' } },
+    lastName: { type: String, required: { message: 'El campo lastName no puede estar vacio' } },
+    password: { type: String, required: { message: 'El campo password no puede estar vacio' } },
+    gear: { type: Number, required: { message: 'El campo gear no puede estar vacio' } },
+    sex: { type: String, required: { message: 'El campo sex no puede estar vacio' } },
+    createAt: { type: Date, default: Date.now }
 })
 
 // Midleware para encriptar la contraseña antes de guardarla
-userScheme.pre('save', async function (next){
+userScheme.pre('save', async function (next) {
     const usuario = this;
+    
     // Solo encriptar la contraseña si ha sido modificada o es nueva
-    if(!usuario.isModified('password')){
+    if (!usuario.isModified('password')) {
         return next()
     }
+
     // add password encriptada
-    try{
+    try {
         const salt = await genSalt(10)
         const hashedPassword = await hash(usuario.password, salt)
         usuario.password = hashedPassword
         next();
-    }catch (error){
+    } catch (error) {
         return next(error)
     }
 })
