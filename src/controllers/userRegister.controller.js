@@ -7,34 +7,40 @@ const registerUser = async (req, res) => {
     try {
         // Verificacion de Usuario e email no duplicate
         let user = await User.findOne({ $or: [{ username }, { email }] })
-        
+
         if (user) {
-            if (user.username == username && user.email == email) {
-                return res.status(400).json({ error: "Este usuario y email ya han sido registrado" })
-            } else if (user.email == email) {
-                return res.status(400).json({ error: "Este email ya a sido registrado" })
-            } else if (user.username == username) {
-                return res.status(400).json({ error: "Este usuario ya a sido registrado" })
+            //String para mostrar el tipo de error
+            let duplicate
+
+            if (user.username === username) {
+                duplicate = 'Este Usuario'
+            } else if (user.email === email) {
+                duplicate = 'Este Email'
             }
+            // Send error
+            const error = new Error(`${duplicate} ya ha sido registrado`)
+            error.status = 400
+            throw error
         }
 
-        // new user 
         user = new User({ username, email, name, lastName, password, gear, sex })
-        
+
         // Validate Campos
-        try{
-            await user.validate()
-        }catch (error){
-            return res.status(400).json({message: error.message})
-        }
+        await user.validate()
 
         // Save User
         await user.save();
         res.status(201).json({ message: "Usuario Registrado exitosamente" })
 
     } catch (error) {
-        console.error(error)
-        res.status(500).json({ error: "Error en el servidor" })
+        console.error('Error en el servidor', error)
+
+        // Control de error de mongoose
+        if (error.name === 'ValidationError') {
+            res.status(400).json({ message: error.message })
+        } else {
+            res.status(error.status || 500).json({ error: error.message })
+        }
     }
 }
 

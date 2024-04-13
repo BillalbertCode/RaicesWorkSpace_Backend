@@ -14,15 +14,20 @@ const loginUser = async (req, res) => {
     try {
         //validacion de usuarios o email existete
         const user = await User.findOne({ $or: [{ username }, { email }] })
+
         if (!user) {
-            return res.status(404).json({ message: 'Usuario o Email invalido' })
+            const error = new Error('Usuario o email Invalido')
+            error.status = 404
+            throw error
         }
 
         // validacion de contraseñas
         const validatePassword = await bcrypt.compare(password, user.password)
 
         if (!validatePassword) {
-            return res.status(400).json({ error: 'contraseña invalida' })
+            const error = new Error('Contraseña Invalida')
+            error.status = 400
+            throw error
         }
 
         //Generacion de Token si la contraseña es valida
@@ -32,8 +37,8 @@ const loginUser = async (req, res) => {
 
         res.status(200).json({ token })
     } catch (error) {
-        console.error('error en el servidor', error)
-        return res.status(500).json({ error: 'error en el servidor' })
+        console.error('Error en el servidor', error)
+        res.status(error.status || 500).json({ error: error.message })
     }
 }
 
