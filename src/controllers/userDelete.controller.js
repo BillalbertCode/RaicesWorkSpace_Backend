@@ -8,7 +8,7 @@ const userDelete= async (req, res) =>{
         const user = await User.findByIdAndDelete(userId)
         
         if (!user) {
-            const error = new Error('Articulo no encontrado')
+            const error = new Error('Usuario no encontrado')
             error.status = 404
             throw error
         }

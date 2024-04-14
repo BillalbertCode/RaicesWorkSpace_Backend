@@ -12,7 +12,7 @@ const articleAllGet = async (req, res) => {
             throw error
         }
 
-        res.status(200).json({ articles })
+        res.status(200).json( articles )
     } catch (error) {
         console.error('Server Error', error)
         res.status(error.status || 500).json({ error: error.message })

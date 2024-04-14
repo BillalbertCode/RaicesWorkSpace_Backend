@@ -15,7 +15,7 @@ router.post('/', authToken, articleCreate)
 router.delete('/:id', authToken, articleDelete )
 
 //Obtener Todos los Articulos
-router.get('/', articleAllGet)
+router.get('/all', articleAllGet)
 
 //Obtener articulos de un usuario
 router.get('/user/:userId', articleUser )

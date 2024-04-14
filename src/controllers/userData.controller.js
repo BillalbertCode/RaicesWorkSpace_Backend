@@ -16,7 +16,7 @@ const userData = async (req, res) => {
             throw error
         }
         //enviamos datos
-        res.json({ user })
+        res.json( user )
     } catch (error) {
         console.error('Error en el servidor', error)
         res.status(error.status || 500).json({ error: error.message })
