@@ -1,0 +1,22 @@
+const User = require('../models/user.model')
+
+const userDelete= async (req, res) =>{
+    try{
+        const userId = req.user.id
+
+        //Eliminamos el usuario por id proporcionada por el token
+        const user = await User.findByIdAndDelete(userId)
+        
+        if (!user) {
+            const error = new Error('Articulo no encontrado')
+            error.status = 404
+            throw error
+        }
+        res.status(200).json({message: 'Usuario Eliminado'})
+    }catch (error){
+        console.error('Server Error', error)
+        res.status(error.status || 500).json({error: error.message})
+    }
+}
+
+module.exports = userDelete;

@@ -10,15 +10,15 @@ const registerUser = async (req, res) => {
 
         if (user) {
             //String para mostrar el tipo de error
-            let duplicate
+            let property
 
             if (user.username === username) {
-                duplicate = 'Este Usuario'
+                property = 'Este Usuario'
             } else if (user.email === email) {
-                duplicate = 'Este Email'
+                property = 'Este Email'
             }
             // Send error
-            const error = new Error(`${duplicate} ya ha sido registrado`)
+            const error = new Error(`${property} ya ha sido registrado`)
             error.status = 400
             throw error
         }
@@ -33,14 +33,13 @@ const registerUser = async (req, res) => {
         res.status(201).json({ message: "Usuario Registrado exitosamente" })
 
     } catch (error) {
-        console.error('Error en el servidor', error)
-
         // Control de error de mongoose
         if (error.name === 'ValidationError') {
             res.status(400).json({ message: error.message })
         } else {
             res.status(error.status || 500).json({ error: error.message })
         }
+        console.error('Error en el servidor', error)
     }
 }
 

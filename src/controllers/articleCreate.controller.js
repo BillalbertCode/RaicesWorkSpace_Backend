@@ -2,7 +2,10 @@ const Article = require('../models/article.model')
 
 const articleCreate = async (req, res) => {
     const { title, content, imagenURL, videoURL, audioURL } = req.body;
+
+    // Al menos algun campo lleno
     const requiredCampos = ['title', 'content', 'imagenURL', 'videoURL', 'audioURL'];
+
     // Extraemos el id del author
     const authorId = req.user?.id;
     try {
