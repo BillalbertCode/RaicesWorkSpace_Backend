@@ -1,13 +1,11 @@
 {
   "name": "raices",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Project R.R.S",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/app.js",
-    "dev": "nodemon ./src/app.js",
-    "devServer": "node ./src/server.js"
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js"
   },
   "author": "BillalbertCode",
   "license": "ISC",
