@@ -8,7 +8,7 @@ const userScheme = new mongoose.Schema({
     name: { type: String, required: { message: 'El campo name no puede estar vacio' } },
     lastName: { type: String, required: { message: 'El campo lastName no puede estar vacio' } },
     password: { type: String, required: { message: 'El campo password no puede estar vacio' } },
-    gear: { type: Number, required: { message: 'El campo gear no puede estar vacio' } },
+    birthDate: { type: String, required: { message: 'El campo birthDate no puede estar vacio' } },
     sex: { type: String, required: { message: 'El campo sex no puede estar vacio' } },
     createAt: { type: Date, default: Date.now }
 })

@@ -6,6 +6,14 @@ require('dotenv').config()
 
 const app = express()
 app.use(express.json())
+
+//Midleware para hacer llegar los datos 
+app.use((req,res,next)=>{
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+  next()
+})
 //Conect base de datos 
 connectDB()
 

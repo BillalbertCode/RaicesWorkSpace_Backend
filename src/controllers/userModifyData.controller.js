@@ -1,10 +1,10 @@
 const User = require('../models/user.model')
 
 const userModifyData = async (req, res) => {
-    const { email, name, lastName, gear, sex } = req.body
+    const { email, name, lastName, birthDate, sex } = req.body
 
     // Al menos algun campo lleno
-    const requiredCampos = ['email', 'name', 'lastName', 'gear', 'sex']
+    const requiredCampos = ['email', 'name', 'lastName', 'birthDate', 'sex']
 
     try {
         const userId = req.user?.id
@@ -19,7 +19,7 @@ const userModifyData = async (req, res) => {
         }
 
         // actualizamos el usuario
-       await User.findByIdAndUpdate(userId, { email, name, lastName, gear, sex }, { new: true })
+       await User.findByIdAndUpdate(userId, { email, name, lastName, birthDate, sex }, { new: true })
 
         //Enviamos el usuario
         res.status(200).json({ message: 'Usuario actualizado exitosamente' });

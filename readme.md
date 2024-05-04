@@ -94,5 +94,5 @@ Crear una plataforma de espacio de trabajo totalmente intuitiva e interactiva do
 - *Publico* GET /user/profile/:id: Obtener los datos de un usuario por su ID.
 - *Privado* POST /article: Crear un nuevo artículo. 
 - *Privado* DELETE /article/:id: Eliminar un artículo por su ID. 
-- *Publico* GET /article/all: Obtener todos los artículos.
+- *Publico* GET /article/all: Obtener todos los artículos y su usuario.
 - *Publico* GET /article/user/:userId: Obtener los artículos de un usuario por su ID. 

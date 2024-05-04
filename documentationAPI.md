@@ -19,7 +19,7 @@ Usuarios Presentes y registrados
     "name": "Juan",
     "lastName": "Juanito",
     "password": "HACKK300"
-    "gear": 22,
+    "birthDate": 22,
     "sex": "masculino",
 }
 
@@ -59,7 +59,7 @@ Usuarios Presentes y registrados
         "name": "Tyron",
         "lastName": "Jos",
         "password": "$2b$10$Izlghc0MYrCB.avesnKOI.Lrn7fmGyRpxQOkWwveiC.M6BnRL0/4.",
-        "gear": 21,
+        "birthDate": 21,
         "sex": "Masculino",
         "createAt": "2024-04-14T06:38:24.426Z",
         "__v": 0
@@ -78,7 +78,7 @@ Usuarios Presentes y registrados
 "email": "email",
  "name": "name",
  "lastName": "lastName",
- "gear": "gear",
+ "birthDate": "birthDate",
  "sex": "sex"
 } 
 
@@ -103,7 +103,7 @@ Usuarios Presentes y registrados
     "email": "Juan@Hack.com",
     "name": "Juan",
     "lastName": "Juanito",
-    "gear": 22,
+    "birthDate": 22,
     "sex": "masculino",
     "createAt": "2024-04-05T01:24:36.394Z",
     "__v": 0
