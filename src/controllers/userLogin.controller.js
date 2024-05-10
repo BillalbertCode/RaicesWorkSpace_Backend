@@ -16,8 +16,12 @@ const loginUser = async (req, res) => {
         const user = await User.findOne({ $or: [{ username }, { email }] })
 
         if (!user) {
-            const error = new Error('Usuario o email Invalido')
+            const error = new Error
             error.status = 404
+            error.message = {
+                username: 'Usuario Invalido',
+                email: 'Email Invalido'
+            }
             throw error
         }
 
@@ -25,8 +29,11 @@ const loginUser = async (req, res) => {
         const validatePassword = await bcrypt.compare(password, user.password)
 
         if (!validatePassword) {
-            const error = new Error('Contraseña Invalida')
+            const error = new Error
             error.status = 400
+            error.message = {
+                password: 'Contraseña Invalida'
+            } 
             throw error
         }
 
@@ -41,7 +48,7 @@ const loginUser = async (req, res) => {
             token: token
         })
     } catch (error) {
-        console.error('Error en el servidor', error)
+        console.error('Error en el servidor', error.message)
         res.status(error.status || 500).json({ error: error.message })
     }
 }

@@ -1,4 +1,5 @@
 const User = require('../models/user.model')
+const jwt = require('jsonwebtoken')
 
 // Registro de usuarios
 const registerUser = async (req, res) => {
@@ -10,16 +11,19 @@ const registerUser = async (req, res) => {
 
         if (user) {
             //String para mostrar el tipo de error
-            let property
+            const mensaje = 'ya ha sido registrado'
 
-            if (user.username === username) {
-                property = 'Este Usuario'
-            } else if (user.email === email) {
-                property = 'Este Email'
-            }
             // Send error
-            const error = new Error(`${property} ya ha sido registrado`)
+            const error = new Error
             error.status = 400
+            error.message = {}
+            // Controlamos Los errores
+            if (user.username === username) {
+                error.message.username = `Este Usuario ${mensaje}`
+            }
+            if (user.email === email) {
+                error.message.email = `Este Email ${mensaje}`
+            }
             throw error
         }
 
@@ -30,7 +34,17 @@ const registerUser = async (req, res) => {
 
         // Save User
         await user.save();
-        res.status(201).json({ message: "Usuario Registrado exitosamente" })
+
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+            expiresIn: '1h'
+        })
+
+        res.status(201).json({
+            login: true,
+            id: user._id,
+            token: token,
+            message: "Usuario Registrado exitosamente"
+        })
 
     } catch (error) {
         // Control de error de mongoose
@@ -39,7 +53,7 @@ const registerUser = async (req, res) => {
         } else {
             res.status(error.status || 500).json({ error: error.message })
         }
-        console.error('Error en el servidor', error)
+        console.error('Error en el servidor', error.message)
     }
 }
 
