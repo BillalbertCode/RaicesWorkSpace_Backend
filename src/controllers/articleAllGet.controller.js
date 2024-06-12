@@ -2,9 +2,14 @@ const Article = require('../models/article.model')
 const User = require('../models/user.model')
 
 const articleAllGet = async (req, res) => {
+    // Paginacion para cargar
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 5;
+    const skip = (page - 1 ) * limit
+
     try {
         // Obtenemos los articles de la DB en orden de recientes
-        const articles = await Article.find().sort({createAt: -1})
+        const articles = await Article.find().skip(skip).limit(limit).sort({createAt: -1})
 
         //Manejo de error articulos no encotrados
         if (articles.lenght === 0) {

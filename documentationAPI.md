@@ -142,7 +142,7 @@ Articulos creados por los usuarios
 - Errores (401 *No tienes los permisos Necesarios*),(404 *Articulo no encontrado*)
 
 #### Obtener todos los articulos **Publico**
-- Metodo: GET
+- Metodo: GET *tiene paginacion*
 - URL: */article/all*
 - Description: Obtiene todos los articulos de todos los usuarios
 - Respuesta exitosa (200 *Ok*)
@@ -174,7 +174,7 @@ Articulos creados por los usuarios
 ]
 
 #### Obtener Articulos de un usuario **Publico**
-- Metodo: GET
+- Metodo: GET *tiene paginacion*
 - URL: */article/user/:userId*
 - Description: Obtiene todos los articulos de un solo usuario 
 - Respuesta exitosa (200 *Ok*)

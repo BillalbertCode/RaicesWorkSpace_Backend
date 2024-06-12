@@ -1,12 +1,17 @@
 const Article = require('../models/article.model')
 const User = require('../models/user.model')
+
 const articleUser = async (req, res) => {
+    // Paginacion para cargar
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 5;
+    const skip = (page -1) * limit
     try {
         //Obtenemos el id del Usuario por el url
         const { userId } = req.params
 
         // Busqueda de articulos por author(userId) ordenado por fecha mas reciente
-        const articles = await Article.find({ author: userId }).sort({ createAt: -1 })
+        const articles = await Article.find({ author: userId }).skip(skip).limit(limit).sort({ createAt: -1 })
 
         //Revisamos que tenga algun articulo
         if (articles.length === 0) {

@@ -44,8 +44,6 @@ Crear una plataforma de espacio de trabajo totalmente intuitiva e interactiva do
 ### Listado de Artículos:
 
 - Mostrar una lista de los artículos más recientes en la página principal.
-
-*(proximo)*
 - Paginación para navegar entre múltiples páginas de artículos.
 
 ### Contenedores Docker:
@@ -73,7 +71,7 @@ Crear una plataforma de espacio de trabajo totalmente intuitiva e interactiva do
 - Sistema de comentarios en cada artículo para que los usuarios puedan interactuar.
 - Posibilidad de responder a comentarios y recibir notificaciones de nuevas respuestas.
 
-### Gestión de Sesiones y Cookies:*(Proximamente)*
+### Gestión de Sesiones y Cookies:
 
 - Mantener la sesión del usuario activa utilizando cookies y tokens JWT.
 - Cerrar sesión y eliminar cookies al salir.
@@ -94,5 +92,5 @@ Crear una plataforma de espacio de trabajo totalmente intuitiva e interactiva do
 - *Publico* GET /user/profile/:id: Obtener los datos de un usuario por su ID.
 - *Privado* POST /article: Crear un nuevo artículo. 
 - *Privado* DELETE /article/:id: Eliminar un artículo por su ID. 
-- *Publico* GET /article/all: Obtener todos los artículos y su usuario.
-- *Publico* GET /article/user/:userId: Obtener los artículos de un usuario por su ID. 
+- *Publico* GET /article/all: Obtener todos los artículos y su usuario. *tiene paginacion*
+- *Publico* GET /article/user/:userId: Obtener los artículos de un usuario por su ID. *tiene paginacion*
