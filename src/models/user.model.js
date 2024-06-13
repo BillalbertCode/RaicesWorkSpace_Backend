@@ -10,13 +10,14 @@ const userScheme = new mongoose.Schema({
     password: { type: String, required: { message: 'El campo password no puede estar vacio' } },
     birthDate: { type: String, required: { message: 'El campo birthDate no puede estar vacio' } },
     sex: { type: String, required: { message: 'El campo sex no puede estar vacio' } },
+    profileIconUrl: { type: String, required: { message: 'Elije Algun Icono de perfil' } },
     createAt: { type: Date, default: Date.now }
 })
 
 // Midleware para encriptar la contraseña antes de guardarla
 userScheme.pre('save', async function (next) {
     const usuario = this;
-    
+
     // Solo encriptar la contraseña si ha sido modificada o es nueva
     if (!usuario.isModified('password')) {
         return next()

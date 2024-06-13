@@ -1,5 +1,5 @@
 # Documentation EndPoints and Utilitys
-Update: 4/14/2024
+Update:06/13/2024
 
 ## User
 Usuarios Presentes y registrados
@@ -14,13 +14,14 @@ Usuarios Presentes y registrados
 - Errores (400 *Usuario o Email Ya registrado*)
 - json Post: 
 {
-    "username": "JuanTrampa",
-    "email": "Juan@Hack.com",
-    "name": "Juan",
-    "lastName": "Juanito",
-    "password": "HACKK300"
-    "birthDate": 22,
-    "sex": "masculino",
+    "username": "username",
+    "email": "email@email.name",
+    "name": "name",
+    "lastName": "lastName",
+    "password": "password"
+    "birthDate": birthDateNumber,
+    "sex": "sex",
+    "profileIconUrl":"URL"
 }
 
 #### Login de Usuario
@@ -31,15 +32,15 @@ Usuarios Presentes y registrados
 - Errores (400 *Contraseña Invalida*), (400 *Alguno de los campos son requeridos : username, email*), (404 *usuario o email invalido*)
 - json Post: 
 {
-    "username": "JuanTrampa",
+    "username": "username",
     // or
-    "email": "Juan@Hack.com",
+    "email": "email@email.com",
     // Obligatorio
-    "password": "HACKK300"
+    "password": "password"
 }
 - json Get:
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWI3OWUwODk1NDg5MGE5ZTk1YWU5OSIsImlhdCI6MTcxMzA3NzE5OCwiZXhwIjoxNzEzMDgwNzk4fQ.eSJMP7tIjUPImWz-R1OeqIbaCjj9x4efLvVGt9GB2Jo"
+    "token": "token"
 }
 
 
@@ -53,14 +54,14 @@ Usuarios Presentes y registrados
 - Errores: (404 *Not found*)
 - json Get: 
 {
-        "_id": "661b79e08954890a9e95ae99",
-        "username": "Canserbero",
-        "email": "Canserbero@gmail.com",
-        "name": "Tyron",
-        "lastName": "Jos",
-        "password": "$2b$10$Izlghc0MYrCB.avesnKOI.Lrn7fmGyRpxQOkWwveiC.M6BnRL0/4.",
-        "birthDate": 21,
-        "sex": "Masculino",
+        "_id": "_id",
+        "username": "username",
+        "email": "email@email.com",
+        "name": "name",
+        "lastName": "lastName",
+        "password": "password encript",
+        "birthDate": birthDateNumber,
+        "sex": "sex",
         "createAt": "2024-04-14T06:38:24.426Z",
         "__v": 0
 }
@@ -78,7 +79,7 @@ Usuarios Presentes y registrados
 "email": "email",
  "name": "name",
  "lastName": "lastName",
- "birthDate": "birthDate",
+ "birthDate": birthDateNumber,
  "sex": "sex"
 } 
 
@@ -99,12 +100,12 @@ Usuarios Presentes y registrados
 - Errores (404 *Not found*), (400 *Formato de ID No Valido*)
 - json: 
 {
-    "username": "JuanTrampa",
-    "email": "Juan@Hack.com",
-    "name": "Juan",
-    "lastName": "Juanito",
-    "birthDate": 22,
-    "sex": "masculino",
+    "username": "username",
+    "email": "email@email.com",
+    "name": "name",
+    "lastName": "lastName",
+    "birthDate": birthDateNumber,
+    "sex": "sex",
     "createAt": "2024-04-05T01:24:36.394Z",
     "__v": 0
 }
@@ -150,24 +151,24 @@ Articulos creados por los usuarios
 - json Get:
 [
     {
-        "_id": "661408fde21c2cebf2fbd7a5",
+        "_id": "_id",
         "title": "titulo1",
         "content": "Post de muestra 1",
-        "author": "6614078ce21c2cebf2fbd79c",
+        "author": "authorId",
         "createAt": "2024-04-08T15:10:53.585Z",
         "__v": 0
     },
     {
-        "_id": "661409a4e21c2cebf2fbd7a9",
+        "_id": "_id",
         "content": "Post de muesta 2 ",
-        "author": "6614078ce21c2cebf2fbd79c",
+        "author": "authorId",
         "createAt": "2024-04-08T15:13:40.560Z",
         "__v": 0
     },
     {
-        "_id": "661440370d5d01f3492385a7",
+        "_id": "_id",
         "title": "Legends Never Die",
-        "author": "66140837e21c2cebf2fbd7a2",
+        "author": "authorId",
         "createAt": "2024-04-08T19:06:32.019Z",
         "__v": 0
     }
@@ -182,18 +183,18 @@ Articulos creados por los usuarios
 - json Get:
 [
     {
-        "_id": "6619df823feee62c254df6f8",
-        "title": "BANKAIAIAIAI",
-        "content": "hetsugatenshoo",
-        "author": "6619dbc73feee62c254df6ea",
+        "_id": "_id",
+        "title": "X title",
+        "content": "content",
+        "author": "authorId",
         "createAt": "2024-04-13T01:27:30.753Z",
         "__v": 0
     },
     {
-        "_id": "661b2d6e2bcfeed9171095a5",
-        "title": "pa cuando",
-        "content": "Kuchiki",
-        "author": "6619dbc73feee62c254df6ea",
+        "_id": "_id",
+        "title": "X title",
+        "content": "X content",
+        "author": "author _id",
         "createAt": "2024-04-14T01:12:14.509Z",
         "__v": 0
     }

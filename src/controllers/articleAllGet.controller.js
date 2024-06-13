@@ -40,7 +40,8 @@ const articleAllGet = async (req, res) => {
                     _id: authors._id,
                     username: authors.username,
                     name: authors.name,
-                    lastName: authors.lastName
+                    lastName: authors.lastName,
+                    profileIconUrl: authors.profileIconUrl
                 },
                 createAt: article.createAt
             })

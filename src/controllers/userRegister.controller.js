@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 
 // Registro de usuarios
 const registerUser = async (req, res) => {
-    const { username, email, name, lastName, password, birthDate, sex } = req.body;
+    const { username, email, name, lastName, password, birthDate, sex,profileIconUrl } = req.body;
 
     try {
         // Verificacion de Usuario e email no duplicate
@@ -27,7 +27,7 @@ const registerUser = async (req, res) => {
             throw error
         }
 
-        user = new User({ username, email, name, lastName, password, birthDate, sex })
+        user = new User({ username, email, name, lastName, password, birthDate, sex, profileIconUrl })
 
         // Validate Campos
         await user.validate()
