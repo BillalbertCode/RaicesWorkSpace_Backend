@@ -18,7 +18,7 @@ const corsOptions = {
     if (!origin) return callback(null, true)
     if (allowedOrigines.indexOf(origin) === -1){
       const msg = 'El origen Cors No esta permitido'
-      return callback(newError(msg), false);
+      return callback(new Error(msg), false);
     }
     return callback(null,true)
   },
@@ -37,9 +37,5 @@ app.use('/user', userRouter)
 // Rutas de Articles
 app.use('/article', articleRouter)
 
-// Variables de desarrollo
-// const port = process.env.PORT || 3000
-
-// app.listen(port, () => {
-//   console.log(`Servidor corriendo en el puerto: ${port}`);
-// });
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
