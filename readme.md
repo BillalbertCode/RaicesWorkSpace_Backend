@@ -22,6 +22,8 @@ Crear una plataforma de espacio de trabajo totalmente intuitiva e interactiva do
 
 - Docker (para contenerizar la aplicación)
 - JWT (JSON Web Tokens) para autenticación
+- Cors (npm library)
+- bcrypt (npm library)
 
 *Proximo*
 
