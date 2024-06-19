@@ -9,7 +9,7 @@ const app = express()
 app.use(express.json())
 
 // Origenes permitidos
-const allowedOrigines = ['http://localhost:3000', 'https://MisiteWeb.com']
+const allowedOrigines = ['https://raicesworkspace.vercel.app/']
 
 // Configuracion de CORS
 const corsOptions = {
