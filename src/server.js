@@ -9,24 +9,25 @@ const app = express()
 app.use(express.json())
 
 // Origenes permitidos
-const allowedOrigines = ['https://raicesworkspace.vercel.app/']
+const allowedOrigins = ['https://raicesworkspace.vercel.app'];
 
-// Configuracion de CORS
 const corsOptions = {
-  origin: function(origin, callback){
+  origin: function(origin, callback) {
     // Permitir solicitudes sin origen como Postman
-    if (!origin) return callback(null, true)
-    if (allowedOrigines.indexOf(origin) === -1){
-      const msg = 'El origen Cors No esta permitido'
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'El origen CORS no está permitido';
+      console.log(`Origen no permitido: ${origin}`); // Logging para debug
       return callback(new Error(msg), false);
     }
-    return callback(null,true)
+    return callback(null, true);
   },
   methods: 'GET, PUT, POST, DELETE',
   allowedHeaders: ['Content-Type', 'Authorization']
-}
-//Midleware para hacer llegar los datos 
-app.use(cors(corsOptions))
+};
+
+// Middleware para hacer llegar los datos
+app.use(cors(corsOptions));
 
 //Conect base de datos 
 connectDB()
